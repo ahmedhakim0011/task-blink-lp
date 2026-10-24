@@ -1,106 +1,135 @@
 "use client";
 
+import { useState } from "react";
 import { motion } from "framer-motion";
 import {
+  Bell,
   Clock,
-  Globe,
-  Moon,
   ShieldCheck,
   SlidersHorizontal,
+  Smartphone,
   Zap,
 } from "lucide-react";
-import { PhoneMockup } from "./PhoneMockup";
+import { SegmentedControl } from "./SegmentedControl";
 
-const features = [
+const coreFeatures = [
   {
     icon: ShieldCheck,
     title: "One task, always visible",
     body: "Your current focus lives on the home screen. Edit in one tap when priorities shift.",
+    tag: "Live now",
+    metric: "1 task",
   },
   {
     icon: Clock,
     title: "Snooze when you need a break",
-    body: "Intentional breaks matter. Pause the shield for 15 minutes, then it resumes automatically.",
+    body: "Pause the shield for 15 minutes, then it resumes automatically.",
+    tag: "Offline available",
+    metric: "15 min",
   },
   {
     icon: SlidersHorizontal,
     title: "Your distraction list",
-    body: "Pick exactly which apps trigger the nudge. Change the list anytime from settings.",
+    body: "Pick exactly which apps trigger the nudge. Change the list anytime.",
+    tag: "Private",
+    metric: "3 apps free",
   },
-  {
-    icon: Moon,
-    title: "Dark, calm interface",
-    body: "Designed to feel like part of your phone — not another loud productivity app screaming at you.",
-  },
-  {
-    icon: Globe,
-    title: "Works across platforms",
-    body: "Same mental model on iOS and Android. Native integrations on each — honest about the differences.",
-  },
+];
+
+const proFeatures = [
   {
     icon: Zap,
-    title: "Pro: unlimited + custom timing",
-    body: "Shield unlimited apps, tweak blink duration, and unlock Android system-wide mode.",
+    title: "Unlimited shielded apps",
+    body: "Protect every app that pulls you away — not just three.",
+    tag: "Pro",
+    metric: "∞ apps",
+  },
+  {
+    icon: Bell,
+    title: "Custom blink timing",
+    body: "Tune the reminder duration to match how you work.",
+    tag: "Pro",
+    metric: "1–10s",
+  },
+  {
+    icon: Smartphone,
+    title: "Android system-wide mode",
+    body: "Shield all apps except launchers when you need maximum coverage.",
+    tag: "Pro",
+    metric: "System-wide",
   },
 ];
 
 export function Features() {
+  const [tab, setTab] = useState<"individuals" | "teams">("individuals");
+  const features = tab === "individuals" ? coreFeatures : proFeatures;
+
   return (
-    <section id="features" className="relative overflow-hidden py-24 md:py-32">
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-surface/30 to-transparent" />
-
-      <div className="section-pad relative mx-auto max-w-7xl">
-        <div className="grid items-end gap-10 lg:grid-cols-[1fr_1.1fr] lg:gap-16">
-          <div>
-            <p className="text-sm font-medium uppercase tracking-[0.2em] text-primary">
-              Features
-            </p>
-            <h2 className="display-heading mt-4 text-4xl font-bold md:text-5xl">
-              Built for real
-              <br />
-              context switching
-            </h2>
-            <p className="mt-5 max-w-md text-lg text-text-secondary">
-              Not another blocker that you&apos;ll uninstall by Friday. A small
-              friction point at the exact moment your brain goes on autopilot.
-            </p>
-          </div>
-
-          <div className="relative flex items-end justify-center gap-4 sm:gap-6">
-            <PhoneMockup
-              src="/mockups/mockup2.png"
-              alt="Welcome onboarding screen"
-              className="max-w-[220px] sm:max-w-[240px]"
-            />
-            <PhoneMockup
-              src="/mockups/mockup1.png"
-              alt="Screen Time permission screen"
-              className="max-w-[220px] translate-y-6 sm:max-w-[240px] sm:translate-y-10"
+    <section id="features" className="section-pad py-24 md:py-32">
+      <div className="mx-auto max-w-7xl">
+        <div className="mx-auto max-w-2xl text-center">
+          <p className="section-eyebrow">Features</p>
+          <h2 className="display-heading mt-4 text-4xl font-bold md:text-5xl">
+            Built for real context switching
+          </h2>
+          <p className="mt-5 text-lg text-text-secondary">
+            Card-based tools that meet you at the moment of drift — not another
+            blocker you&apos;ll uninstall by Friday.
+          </p>
+          <div className="mt-8 flex justify-center">
+            <SegmentedControl
+              options={[
+                { value: "individuals", label: "For individuals" },
+                { value: "teams", label: "For power users" },
+              ]}
+              value={tab}
+              onChange={setTab}
             />
           </div>
         </div>
 
-        <div className="mt-16 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-14 grid gap-6 md:grid-cols-3">
           {features.map((feature, index) => (
-            <motion.div
+            <motion.article
               key={feature.title}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
-              transition={{ duration: 0.5, delay: index * 0.05 }}
-              className="rounded-2xl border border-border/80 bg-surface/50 p-6 backdrop-blur-sm"
+              transition={{ duration: 0.5, delay: index * 0.06 }}
+              className="feature-card group"
             >
-              <feature.icon
-                className="size-5 text-primary"
-                strokeWidth={1.75}
-              />
-              <h3 className="display-heading mt-4 text-lg font-semibold">
-                {feature.title}
-              </h3>
-              <p className="mt-2 text-sm leading-relaxed text-text-secondary">
+              <div className="flex items-start justify-between">
+                <div className="flex size-12 items-center justify-center rounded-2xl bg-primary-container">
+                  <feature.icon
+                    className="size-5 text-primary"
+                    strokeWidth={1.75}
+                  />
+                </div>
+                <span className="rounded-full bg-surface px-3 py-1 text-[11px] font-semibold uppercase tracking-wide text-primary">
+                  {feature.tag}
+                </span>
+              </div>
+
+              <div className="mt-6 flex items-end justify-between gap-4">
+                <h3 className="display-heading text-xl font-semibold">
+                  {feature.title}
+                </h3>
+                <span className="display-heading shrink-0 text-2xl font-bold text-foreground">
+                  {feature.metric}
+                </span>
+              </div>
+
+              <p className="mt-3 text-sm leading-relaxed text-text-secondary">
                 {feature.body}
               </p>
-            </motion.div>
+
+              <div className="mt-6 h-2 overflow-hidden rounded-full bg-surface-variant">
+                <div
+                  className="h-full rounded-full bg-primary-light transition-all duration-500 group-hover:w-full"
+                  style={{ width: `${65 + index * 10}%` }}
+                />
+              </div>
+            </motion.article>
           ))}
         </div>
       </div>

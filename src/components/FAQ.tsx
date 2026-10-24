@@ -34,15 +34,13 @@ export function FAQ() {
     <section className="section-pad py-24 md:py-32">
       <div className="mx-auto max-w-3xl">
         <div className="text-center">
-          <p className="text-sm font-medium uppercase tracking-[0.2em] text-primary">
-            FAQ
-          </p>
+          <p className="section-eyebrow">FAQ</p>
           <h2 className="display-heading mt-4 text-3xl font-bold md:text-4xl">
             Questions, answered plainly
           </h2>
         </div>
 
-        <div className="mt-12 divide-y divide-border rounded-2xl border border-border bg-surface/40">
+        <div className="mt-12 divide-y divide-border overflow-hidden rounded-3xl border border-border bg-surface-card shadow-[0_4px_12px_rgba(0,0,0,0.04)]">
           {faqs.map((faq, index) => {
             const isOpen = openIndex === index;
             return (
@@ -50,7 +48,7 @@ export function FAQ() {
                 <button
                   type="button"
                   onClick={() => setOpenIndex(isOpen ? null : index)}
-                  className="flex w-full items-center justify-between gap-4 px-6 py-5 text-left transition-colors hover:bg-surface/60"
+                  className="flex w-full items-center justify-between gap-4 px-6 py-5 text-left transition-colors hover:bg-surface-muted"
                   aria-expanded={isOpen}
                 >
                   <span className="font-semibold">{faq.q}</span>

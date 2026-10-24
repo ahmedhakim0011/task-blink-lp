@@ -1,48 +1,45 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { StoreButtons } from "./StoreButtons";
+import Link from "next/link";
 import { PhoneMockup } from "./PhoneMockup";
 
 export function Hero() {
   return (
-    <section className="relative overflow-hidden pt-28 pb-16 md:pt-36 md:pb-24 lg:pt-40">
-      <div
-        className="pointer-events-none absolute inset-0"
-        aria-hidden="true"
-      >
-        <div className="absolute -top-32 left-1/2 h-[520px] w-[720px] -translate-x-1/2 rounded-full bg-primary/8 blur-[120px]" />
-        <div className="absolute top-1/3 -right-24 h-64 w-64 rounded-full bg-primary/5 blur-[80px]" />
-      </div>
-
-      <div className="section-pad relative mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16">
+    <section className="hero-ambient relative overflow-hidden pt-28 pb-20 md:pt-36 md:pb-28 lg:pt-40">
+      <div className="section-pad relative mx-auto grid max-w-7xl items-center gap-14 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16">
         <motion.div
           initial={{ opacity: 0, y: 28 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
         >
-          <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-border bg-surface/80 px-3 py-1.5 text-xs text-text-secondary backdrop-blur-sm">
-            <span className="size-1.5 rounded-full bg-primary pulse-ring" />
-            iOS & Android · Gentle nudge, not a lockout
+          <div className="pill-badge mb-8 gap-2">
+            <span className="size-2 rounded-full bg-primary-light pulse-ring" />
+            New generation focus app
           </div>
 
-          <h1 className="display-heading text-[clamp(2.5rem,6vw,4.25rem)] font-extrabold tracking-tight">
+          <h1 className="display-heading text-[clamp(2.75rem,6vw,4.5rem)] font-extrabold tracking-tight text-foreground">
             Stay on task
             <br />
             <span className="text-primary">when you drift</span>
           </h1>
 
           <p className="mt-6 max-w-xl text-lg leading-relaxed text-text-secondary md:text-xl">
-            Every time you switch to a distracting app, Task Blink
-            reminds you what you were actually doing — for 2 seconds, then gets
-            out of your way.
+            Every time you switch to a distracting app, Task Blink reminds you
+            what you were actually doing — for 2 seconds, then gets out of your
+            way.
           </p>
 
-          <div className="mt-10">
-            <StoreButtons size="large" />
+          <div className="mt-10 flex flex-wrap items-center gap-3">
+            <Link href="#download" className="btn-primary">
+              Download free
+            </Link>
+            <Link href="#how-it-works" className="btn-secondary">
+              See how it works
+            </Link>
           </div>
 
-          <dl className="mt-12 grid grid-cols-3 gap-6 border-t border-border/70 pt-8">
+          <dl className="mt-14 grid grid-cols-3 gap-6 border-t border-border pt-8">
             {[
               { value: "2s", label: "Brief reminder" },
               { value: "0", label: "Data sold" },
@@ -70,6 +67,7 @@ export function Hero() {
             src="/mockups/mockup2.png"
             alt="Task Blink welcome screen — Stay on task when you drift"
             priority
+            tilt
           />
         </motion.div>
       </div>

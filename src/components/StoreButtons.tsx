@@ -12,12 +12,13 @@ export function StoreButtons({
   const isLarge = size === "large";
 
   return (
-    <div className={`flex flex-wrap gap-3 ${className}`}>
+    <div className={`flex flex-wrap justify-center gap-3 ${className}`}>
       <a
         href="#download"
-        className={`group inline-flex items-center gap-3 rounded-full border border-border bg-surface transition-all hover:border-primary/40 hover:bg-surface-variant ${
-          isLarge ? "px-6 py-3.5" : "px-5 py-2.5"
+        className={`group inline-flex items-center gap-3 rounded-full bg-surface px-5 py-3 transition-all hover:bg-surface-variant ${
+          isLarge ? "px-6 py-3.5" : ""
         }`}
+        style={{ boxShadow: "0 4px 12px rgba(0,0,0,0.05)" }}
       >
         <Apple
           className={`text-foreground ${isLarge ? "size-6" : "size-5"}`}
@@ -36,9 +37,10 @@ export function StoreButtons({
       </a>
       <a
         href="#download"
-        className={`group inline-flex items-center gap-3 rounded-full border border-border bg-surface transition-all hover:border-primary/40 hover:bg-surface-variant ${
-          isLarge ? "px-6 py-3.5" : "px-5 py-2.5"
+        className={`group inline-flex items-center gap-3 rounded-full bg-surface px-5 py-3 transition-all hover:bg-surface-variant ${
+          isLarge ? "px-6 py-3.5" : ""
         }`}
+        style={{ boxShadow: "0 4px 12px rgba(0,0,0,0.05)" }}
       >
         <Play
           className={`text-foreground ${isLarge ? "size-6" : "size-5"}`}

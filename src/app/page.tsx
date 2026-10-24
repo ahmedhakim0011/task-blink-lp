@@ -1,6 +1,6 @@
 import { Navbar } from "@/components/Navbar";
 import { Hero } from "@/components/Hero";
-import { ProblemStrip } from "@/components/ProblemStrip";
+import { SocialProof } from "@/components/SocialProof";
 import { HowItWorks } from "@/components/HowItWorks";
 import { ShieldInAction } from "@/components/ShieldInAction";
 import { Features } from "@/components/Features";
@@ -16,7 +16,7 @@ export default function Home() {
       <Navbar />
       <main>
         <Hero />
-        <ProblemStrip />
+        <SocialProof />
         <HowItWorks />
         <ShieldInAction />
         <Features />

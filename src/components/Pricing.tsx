@@ -16,9 +16,7 @@ export function Pricing() {
     <section id="pricing" className="section-pad py-24 md:py-32">
       <div className="mx-auto max-w-7xl">
         <div className="mx-auto max-w-2xl text-center">
-          <p className="text-sm font-medium uppercase tracking-[0.2em] text-primary">
-            Pricing
-          </p>
+          <p className="section-eyebrow">Pricing</p>
           <h2 className="display-heading mt-4 text-4xl font-bold md:text-5xl">
             Start free.
             <br />
@@ -35,7 +33,7 @@ export function Pricing() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="rounded-3xl border border-border bg-surface p-8 md:p-10"
+            className="feature-card md:p-10"
           >
             <p className="text-sm font-medium text-text-muted">Free</p>
             <p className="display-heading mt-2 text-5xl font-bold">$0</p>
@@ -62,56 +60,54 @@ export function Pricing() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="relative overflow-hidden rounded-3xl border-2 border-primary/40 bg-surface p-8 md:p-10"
+            className="feature-card border-primary-border bg-primary-container md:p-10"
           >
-            <div className="absolute -right-8 -top-8 size-32 rounded-full bg-primary/10 blur-2xl" />
-            <div className="relative">
-              <div className="flex items-center gap-3">
-                <p className="text-sm font-medium text-primary">Pro</p>
-                <span className="rounded-full bg-primary px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-background">
-                  Popular
-                </span>
-              </div>
-              <p className="display-heading mt-2 text-5xl font-bold">
-                $2.99
-                <span className="text-lg font-medium text-text-muted">
-                  /mo
-                </span>
-              </p>
-              <p className="mt-2 text-text-secondary">
-                Or save with annual billing in the app.
-              </p>
+            <div className="flex items-center gap-3">
+              <p className="text-sm font-semibold text-primary">Pro</p>
+              <span className="rounded-full bg-primary px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-on-primary">
+                Popular
+              </span>
+            </div>
+            <p className="display-heading mt-2 text-5xl font-bold">
+              $2.99
+              <span className="text-lg font-medium text-text-muted">/mo</span>
+            </p>
+            <p className="mt-2 text-text-secondary">
+              Or save with annual billing in the app.
+            </p>
 
-              <div className="mt-8 overflow-hidden rounded-2xl border border-border">
-                <table className="w-full text-sm">
-                  <thead>
-                    <tr className="border-b border-border bg-background/40">
-                      <th className="px-4 py-3 text-left font-medium text-text-muted">
-                        Feature
-                      </th>
-                      <th className="px-4 py-3 text-left font-medium text-text-muted">
-                        Free
-                      </th>
-                      <th className="px-4 py-3 text-left font-medium text-primary">
-                        Pro
-                      </th>
+            <div className="mt-8 overflow-hidden rounded-2xl border border-border bg-surface-card">
+              <table className="w-full text-sm">
+                <thead>
+                  <tr className="border-b border-border bg-surface-muted">
+                    <th className="px-4 py-3 text-left font-medium text-text-muted">
+                      Feature
+                    </th>
+                    <th className="px-4 py-3 text-left font-medium text-text-muted">
+                      Free
+                    </th>
+                    <th className="px-4 py-3 text-left font-medium text-primary">
+                      Pro
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {comparison.map((row) => (
+                    <tr
+                      key={row.feature}
+                      className="border-b border-border last:border-0"
+                    >
+                      <td className="px-4 py-3">{row.feature}</td>
+                      <td className="px-4 py-3 text-text-secondary">
+                        {row.free}
+                      </td>
+                      <td className="px-4 py-3 font-medium text-primary">
+                        {row.pro}
+                      </td>
                     </tr>
-                  </thead>
-                  <tbody>
-                    {comparison.map((row) => (
-                      <tr key={row.feature} className="border-b border-border/60 last:border-0">
-                        <td className="px-4 py-3">{row.feature}</td>
-                        <td className="px-4 py-3 text-text-secondary">
-                          {row.free}
-                        </td>
-                        <td className="px-4 py-3 font-medium text-primary">
-                          {row.pro}
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
+                  ))}
+                </tbody>
+              </table>
             </div>
           </motion.div>
         </div>

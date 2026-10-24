@@ -28,18 +28,16 @@ export function HowItWorks() {
   return (
     <section id="how-it-works" className="section-pad py-24 md:py-32">
       <div className="mx-auto max-w-7xl">
-        <div className="max-w-2xl">
-          <p className="text-sm font-medium uppercase tracking-[0.2em] text-primary">
-            How it works
-          </p>
+        <div className="mx-auto max-w-2xl text-center">
+          <p className="section-eyebrow">How it works</p>
           <h2 className="display-heading mt-4 text-4xl font-bold md:text-5xl">
             Three steps.
             <br />
             Zero willpower theater.
           </h2>
           <p className="mt-5 text-lg text-text-secondary">
-            Task Blink doesn&apos;t block your phone or shame you.
-            It interrupts the autopilot moment — the second before you scroll.
+            Task Blink doesn&apos;t block your phone or shame you. It interrupts
+            the autopilot moment — the second before you scroll.
           </p>
         </div>
 
@@ -55,13 +53,13 @@ export function HowItWorks() {
                 delay: index * 0.1,
                 ease: [0.16, 1, 0.3, 1],
               }}
-              className="group relative rounded-3xl border border-border bg-surface p-8 transition-colors hover:border-primary/30"
+              className="feature-card"
             >
               <div className="flex items-start justify-between">
-                <span className="flex size-11 items-center justify-center rounded-xl bg-primary/12 text-primary transition-colors group-hover:bg-primary/20">
+                <span className="flex size-12 items-center justify-center rounded-2xl bg-primary-container text-primary">
                   <step.icon className="size-5" strokeWidth={1.75} />
                 </span>
-                <span className="display-heading text-3xl font-bold text-border group-hover:text-text-muted">
+                <span className="display-heading text-3xl font-bold text-border">
                   {step.number}
                 </span>
               </div>
